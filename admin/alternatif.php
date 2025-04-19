@@ -4,6 +4,7 @@ if (isset($_GET['aksi'])) {
         include '../assets/conn/config.php';
         $id_alternatif = $_GET['id_alternatif'];
         mysqli_query($conn, "DELETE FROM tbl_alternatif WHERE id_alternatif='$id_alternatif'");
+        mysqli_query($conn, "DELETE FROM tbl_nilai WHERE id_alternatif='$id_alternatif'");
         header('location:alternatif.php');
     }
 }
