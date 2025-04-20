@@ -62,11 +62,6 @@ include 'header.php';
         <?php } ?>
     </table>
     <bar>
-
-
-
-
-
         <h4>Nilai Konversi Keputusan</h4>
         <table class="table table-bordered">
             <thead>
@@ -120,9 +115,6 @@ include 'header.php';
         </table>
         <br>
 
-
-
-
         <h4>Nilai Normalisasi GAP</h4>
         <table class="table table-bordered">
             <thead>
@@ -172,7 +164,6 @@ include 'header.php';
             <?php } ?>
         </table>
         <br>
-
 
         <h4>Nilai Pemetakan GAP</h4>
         <table class="table table-bordered">
@@ -281,9 +272,10 @@ include 'header.php';
                             <td class="text-center"><?php echo $no++ ?></td>
                             <td class="text-center"><?php echo $a['nama_alternatif'] ?></td>
 
-                        <?php
+                        <?php //dari sini
                             $cekn = mysqli_query($conn, "SELECT a.nilai_subkriteria as nsub, b.id_kriteria as id_kriteria, c.tipe_kriteria as tipe_kriteria FROM tbl_subkriteria a, tbl_nilai b, tbl_kriteria c WHERE a.id_subkriteria=b.id_subkriteria AND b.id_alternatif='$a[id_alternatif]' AND b.id_kriteria=c.id_kriteria ORDER BY b.id_kriteria");
                             while ($aa = mysqli_fetch_array($cekn)) {
+
                                 $dkriteria = mysqli_query($conn, "SELECT * FROM tbl_kriteria WHERE id_kriteria='$aa[id_kriteria]'");
                                 $dk = mysqli_fetch_array($dkriteria);
                                 $nbobot = $dk['bobot_kriteria'];
@@ -315,13 +307,13 @@ include 'header.php';
                                 //cek tipe kriteria
                                 if ($aa['tipe_kriteria'] == 'Core Factor') {
                                     $ncf += $npemetakan;
-                                } elseif ($aa['tipe_kriteria'] == 'Secondary Factor') {
+                                } elseif ($aa['tipe_kriteria'] == 'Secondary F') {
                                     $nsf += $npemetakan;
                                 }
                                 //cek item
                                 $ceki = mysqli_query($conn, "SELECT COUNT(*) as nt_cf FROM tbl_kriteria WHERE tipe_kriteria='Core Factor'");
                                 $ci = mysqli_fetch_array($ceki);
-                                $cekii = mysqli_query($conn, "SELECT COUNT(*) as nt_sf FROM tbl_kriteria WHERE tipe_kriteria='Secondary Factor'");
+                                $cekii = mysqli_query($conn, "SELECT COUNT(*) as nt_sf FROM tbl_kriteria WHERE tipe_kriteria='Secondary F'");
                                 $cii = mysqli_fetch_array($cekii);
 
                                 //hitung nilai cf dan sf
@@ -346,7 +338,7 @@ include 'header.php';
                 <tr>
                     <th class="text-center">No.</th>
                     <th class="text-center">Nama Alternatif</th>
-                    <th class="text-center">No.</th>
+                    <th class="text-center">CF</th>
                     <th class="text-center">SF</th>
                     <th class="text-center">NTotal</th>
 
@@ -357,8 +349,8 @@ include 'header.php';
             $data = mysqli_query($conn, "SELECT * FROM tbl_alternatif ORDER BY id_alternatif");
             $no = 1;
             while ($a = mysqli_fetch_array($data)) {
-                $scnf = 0.0;
-                $scsf = 0.0;
+                $ncf = 0.0; // $scnf
+                $nsf = 0.0; // $scsf
             ?>
                 <tbody>
                     <tr>
@@ -373,7 +365,7 @@ include 'header.php';
 
                         <?php
                             $cekn = mysqli_query($conn, "SELECT a.nilai_subkriteria as nsub, b.id_kriteria as id_kriteria, c.tipe_kriteria as tipe_kriteria FROM tbl_subkriteria a, tbl_nilai b, tbl_kriteria c WHERE a.id_subkriteria=b.id_subkriteria AND b.id_alternatif='$a[id_alternatif]' AND b.id_kriteria=c.id_kriteria ORDER BY b.id_kriteria");
-                            while ($dtn = mysqli_fetch_array($cekn)) {
+                            while ($aa = mysqli_fetch_array($cekn)) {
 
                                 $dkriteria = mysqli_query($conn, "SELECT * FROM tbl_kriteria WHERE id_kriteria='$aa[id_kriteria]'");
                                 $dk = mysqli_fetch_array($dkriteria);
@@ -405,13 +397,13 @@ include 'header.php';
                                 //cek tipe kriteria
                                 if ($aa['tipe_kriteria'] == 'Core Factor') {
                                     $ncf += $npemetakan;
-                                } elseif ($aa['tipe_kriteria'] == 'Secondary Factor') {
+                                } elseif ($aa['tipe_kriteria'] == 'Secondary F') {
                                     $nsf += $npemetakan;
                                 }
                                 //cek item
                                 $ceki = mysqli_query($conn, "SELECT COUNT(*) as nt_cf FROM tbl_kriteria WHERE tipe_kriteria='Core Factor'");
                                 $ci = mysqli_fetch_array($ceki);
-                                $cekii = mysqli_query($conn, "SELECT COUNT(*) as nt_sf FROM tbl_kriteria WHERE tipe_kriteria='Secondary Factor'");
+                                $cekii = mysqli_query($conn, "SELECT COUNT(*) as nt_sf FROM tbl_kriteria WHERE tipe_kriteria='Secondary F'");
                                 $cii = mysqli_fetch_array($cekii);
 
                                 //hitung nilai cf dan sf
@@ -419,7 +411,7 @@ include 'header.php';
                                 $nilai_sf = $nsf / $cii['nt_sf'];
 
                                 //hitung nilai total
-                                $nilai_total = (60 * $nilai_cf) + (40 * $nilai_sf) / 100;
+                                $nilai_total = (60 * $nilai_cf) + (40 * $nilai_sf);
                             }
 
                             echo "<td class='text-center'> $nilai_cf</td>";
@@ -427,7 +419,7 @@ include 'header.php';
                             echo "<td class='text-center'> $nilai_total</td>";
 
                             //ambil nilai total
-                            mysqli_query($conn, "UPDATE tbl_alternatif SET nilai_pm='$nilai_total' WHERE id_alternatif='$sa[id_alternatif]'");
+                            mysqli_query($conn, "UPDATE tbl_alternatif SET nilai_pm='$nilai_total' WHERE id_alternatif='$a[id_alternatif]'");
                         } ?>
                     </tr>
                 </tbody>
@@ -441,7 +433,7 @@ include 'header.php';
         $data = mysqli_query($conn, "SELECT * FROM tbl_alternatif ORDER BY nilai_pm DESC");
         $rank = 1;
         while ($a = mysqli_fetch_array($data)) {
-            mysqli_query($conn, "UPDATE tbl_alternatif SET rangking='$rangk' WHERE id_alternatif='$a[id_alternatif]'");
+            mysqli_query($conn, "UPDATE tbl_alternatif SET rangking='$rank' WHERE id_alternatif='$a[id_alternatif]'");
             $rank++;
         } ?>
 
