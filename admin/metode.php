@@ -307,13 +307,13 @@ include 'header.php';
                                 //cek tipe kriteria
                                 if ($aa['tipe_kriteria'] == 'Core Factor') {
                                     $ncf += $npemetakan;
-                                } elseif ($aa['tipe_kriteria'] == 'Secondary F') {
+                                } elseif ($aa['tipe_kriteria'] == 'Secondary Factor') {
                                     $nsf += $npemetakan;
                                 }
                                 //cek item
                                 $ceki = mysqli_query($conn, "SELECT COUNT(*) as nt_cf FROM tbl_kriteria WHERE tipe_kriteria='Core Factor'");
                                 $ci = mysqli_fetch_array($ceki);
-                                $cekii = mysqli_query($conn, "SELECT COUNT(*) as nt_sf FROM tbl_kriteria WHERE tipe_kriteria='Secondary F'");
+                                $cekii = mysqli_query($conn, "SELECT COUNT(*) as nt_sf FROM tbl_kriteria WHERE tipe_kriteria='Secondary Factor'");
                                 $cii = mysqli_fetch_array($cekii);
 
                                 //hitung nilai cf dan sf
@@ -397,13 +397,13 @@ include 'header.php';
                                 //cek tipe kriteria
                                 if ($aa['tipe_kriteria'] == 'Core Factor') {
                                     $ncf += $npemetakan;
-                                } elseif ($aa['tipe_kriteria'] == 'Secondary F') {
+                                } elseif ($aa['tipe_kriteria'] == 'Secondary Factor') {
                                     $nsf += $npemetakan;
                                 }
                                 //cek item
                                 $ceki = mysqli_query($conn, "SELECT COUNT(*) as nt_cf FROM tbl_kriteria WHERE tipe_kriteria='Core Factor'");
                                 $ci = mysqli_fetch_array($ceki);
-                                $cekii = mysqli_query($conn, "SELECT COUNT(*) as nt_sf FROM tbl_kriteria WHERE tipe_kriteria='Secondary F'");
+                                $cekii = mysqli_query($conn, "SELECT COUNT(*) as nt_sf FROM tbl_kriteria WHERE tipe_kriteria='Secondary Factor'");
                                 $cii = mysqli_fetch_array($cekii);
 
                                 //hitung nilai cf dan sf

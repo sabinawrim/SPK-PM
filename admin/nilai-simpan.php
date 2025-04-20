@@ -42,7 +42,7 @@ if (isset($_GET['pesan'])) {
     <form action="nilai-simpan.php?aksi=simpan" method="POST">
         <div class="form-grup">
             <label>Nama Alternatif</label>
-            <select name="id_alternatif" class="txt form.control">
+            <select name="id_alternatif" class="txt form-control">
                 <option select disable>-Pilih-</option>
                 <?php
                 $dtal = mysqli_query($conn, "SELECT * FROM tbl_alternatif ORDER BY id_alternatif");
@@ -64,7 +64,7 @@ if (isset($_GET['pesan'])) {
             <div class='form-grup mt - 3'>
             <label>$b[nama_kriteria]</label>
 
-            <select name='$idk' class='txt form.control'>
+            <select name='$idk' class='txt form-control'>
             <option selected disable>-Pilih-</option>";
 
             $dtsk = mysqli_query($conn, "SELECT * FROM tbl_subkriteria WHERE id_kriteria='$b[id_kriteria]' ORDER BY nilai_subkriteria ASC");
