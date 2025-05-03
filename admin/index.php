@@ -9,13 +9,14 @@ include 'header.php';
 <div class="container"><br><br>
 
     <div class="text-center ">
-        <h4>Sistem Pendukung Keputusan Penentuan Siswa/Siswi Berprestasi
-            <br>Sekolah SMK Swasta Pab 8 Sampali
+        <h4>SISTEM PENDUKUNG KEPUTUSAN SELEKSI CALON SISWA BERPRESTASI
+            <br>DI SEKOLAH SMK AL WASHLIYAH 2 MERBAU MENGGUNAKAN PROFILE MATCHING
         </h4>
     </div>
     <br>
-    <p class="text-center">SMK Swasta Pab 8 Sampali adalah sebuah perguruan Tinggi Swasta,SMK swasta ini berdiri sejak 2008. Saat ini SMK Swasta Pab 8 Sampali masih menggunakan program kurikulum belajar SMK 2013 REV.
-        Teknik Komputer dan Jaringan. SMK Swasta Pab 8 Sampali memiliki kepala sekolah dengan nama Boimandan operator sekolah Budi Suhendra.
+    <p class="text-center"> SMKS Al Washliyah 2 Merbau adalah sekolah menengah kejuruan, saat ini SMKS Al Washliyah 2 Merbau menggunakan Kurikulum merdeka.
+        SMK Al Washliyah 2 Merbau mempunyai 3 jurusan yaitu TKJ (Teknik Komputer dan Jaringan), TSM (Teknik Sepeda Motor) dan TKR ( Teknik Kendaraan Ringan).
+        Sekolah ini beralamat di jln. Mesjid No. 5, Kec. Marbau, Kabupaten Labuhanbatu Utara. Kepala sekolah saat ini adalah Ruslan,S.T
         Siswa berprestasi adalah mereka yang menunjukkan pencapaian luar biasa dalam berbagai aspek kehidupan sekolah baik dalam bidang akademik maupun non-akademik.
         Mereka tidak hanya mampu meraih nilai yang tinggi dalam pelajaran tetapi juga aktif mengikuti dan memenangkan berbagai kompetisi seperti olimpiade, lomba seni, olahraga atau debat.
         Selain itu, siswa berprestasi umumnya memiliki sikap yang baik, disiplin dan mampu menjadi teladan bagi teman-temannya. Mereka juga sering kali terlibat dalam kegiatan organisasi atau ekstrakurikuler serta mampu memberikan kontribusi positif bagi lingkungan sekolah maupun masyarakat di sekitarnya.
@@ -283,24 +284,24 @@ include 'header.php';
             <tr>
                 <th scope="row">1</th>
                 <td>Nilai Akademik</td>
-                <td>5</td>
+                <td>4</td>
                 <!-- <td>40%</td> -->
             <tr>
                 <th scope="row">2</th>
                 <td>Prestasi Non Akademik</td>
-                <td>5</td>
+                <td>4</td>
                 <!-- <td>25%</td> -->
             </tr>
             <tr>
                 <th scope="row">3</th>
                 <td>Nilai Sikap</td>
-                <td>5</td>
+                <td>4</td>
                 <!-- <td>20%</td> -->
             </tr>
             <tr>
                 <th scope="row">4</th>
                 <td>Absensi Kehadiran</td>
-                <td>5</td>
+                <td>4</td>
                 <!-- <td>15%</td> -->
             </tr>
         </tbody>

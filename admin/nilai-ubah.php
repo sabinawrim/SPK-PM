@@ -30,7 +30,7 @@ include 'header.php';
         <input type="hidden" name="id_alternatif" value="<?= $a['id_alternatif'] ?>">
         <div class="form-grup">
             <label>Nama Alternatif</label>
-            <select name="id_alternatif" class="txt form.control">
+            <select name="id_alternatif" class="txt form-control">
 
 
                 <?php
@@ -62,7 +62,7 @@ include 'header.php';
             <div class='form-grup mt - 3'>
             <label>$b[nama_kriteria]</label>
 
-            <select name='$idk' class='txt form.control'>";
+            <select name='$idk' class='txt form-control'>";
 
             $dtsk = mysqli_query($conn, "SELECT * FROM tbl_subkriteria WHERE id_kriteria='$b[id_kriteria]' ORDER BY nilai_subkriteria ASC");
             while ($c = mysqli_fetch_array($dtsk)) {
